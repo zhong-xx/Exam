@@ -1,0 +1,23 @@
+.wrap {
+    height: 100%;
+    background: rgb(247, 249, 251);
+    overflow: hidden
+}
+
+.form {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 90px;
+    padding: 30px 50px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.form-item-input {
+    height: 40px;
+}
+
+.button {
+    width: 100%;
+    height: 46px
+}
