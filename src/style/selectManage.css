@@ -1,6 +1,13 @@
 .container {
     display: flex;
-    background-color: white;
+    /* background-color: white; */
+    position: relative;
+    height: 200px;
+}
+
+.myTitle {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .item-container {
@@ -8,6 +15,13 @@
 }
 
 .img {
-    width: 30%;
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    max-height: 260px;
     margin-left: 20px;
+    
 }

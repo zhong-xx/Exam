@@ -1,6 +1,7 @@
 import { login } from './user'
-import { getSelectList } from './select'
-import { getFillList } from './fill'
+import { getSelectList, addSelect, updateSelect, deleteSelect } from './select'
+import { getFillList, addFill, updateFill, deleteFill } from './fill'
+import { getJudgeList, addJudge, updateJudge, deleteJudge } from './judge'
 
 import axios from 'axios'
 export let myAxios = axios.create({
@@ -18,7 +19,19 @@ myAxios.interceptors.request.use((config)=> {
 const Http = {
     login,
     getSelectList,
-    getFillList
+    addSelect,
+    updateSelect,
+    deleteSelect,
+
+    getFillList,
+    addFill,
+    updateFill,
+    deleteFill,
+    
+    getJudgeList,
+    addJudge,
+    updateJudge,
+    deleteJudge
 }
 
 export default Http

@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import '../style/login.css'
 import { Link } from 'react-router-dom'
 import Http from '../http'
 
+let PhotoAuthCodeFlag = true; // 图片验证码防抖处理
+
 function Login (props) {
     const onFinish = async (values) => {
-        console.log('Success:', values);
         let result = await Http.login(values.username, values.password, values.code)
-        if(result.status === 200) {
+        if(result.data.code === '0000') {
             sessionStorage.setItem('jwttoken', result.headers.token)
+            message.success(result.data.msg)
             props.history.push('/main/selectManage')
+            return
         }
+        message.warn(result.data.msg)
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
 
-    function handleClick () {
-        let img = document.getElementsByTagName('img')[0]
-        img.src = img.src + 1
+    function handleClick (e) {
+        e.stopPropagation()
+        if (PhotoAuthCodeFlag) {
+            PhotoAuthCodeFlag = false
+            setTimeout(() => {
+                PhotoAuthCodeFlag = true
+            }, 1000)
+            let img = document.getElementsByTagName('img')[0]
+            img.src = img.src + 1
+        } else {
+            alert('你操作太频繁了')
+        }
     }
 
     return (
@@ -72,9 +85,9 @@ function Login (props) {
                     },
                     ]}
                 >
-                    <Input className='form-item-input' style={{width: '60%'}} />
+                    <Input className='form-item-input' style={{width: '50%'}} />
                 </Form.Item>
-                <img src='http://3463z0p267.goho.co/exam/imgcode?' onClick={handleClick} width='150px'/>
+                <img style={{position: 'relative', zIndex: '100'}} src='http://3463z0p267.goho.co/exam/imgcode?' onClick={handleClick} width='150px'/>
 
                 <Form.Item>
                     <Button type="primary" htmlType="submit" className='button'>

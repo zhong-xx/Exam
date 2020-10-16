@@ -1,18 +1,7 @@
-import axios from 'axios'
+import { myAxios } from './index'
+import qs from 'qs'
 
-let myAxios = axios.create({
-    baseURL: 'http://3463z0p267.goho.co/exam'
-})
-
-myAxios.interceptors.request.use((config)=> {
-    var token = sessionStorage.getItem('jwttoken');
-    if(token !== null ) {
-        config.headers.token = token
-    }
-    return config
-})
-
-function getSelectList (pageNum, pageSize, lanId) {
+export function getSelectList (pageNum, pageSize, lanId) {
     return myAxios.get('/findChoice', {
         params: {
             pageNum,
@@ -22,4 +11,20 @@ function getSelectList (pageNum, pageSize, lanId) {
     })
 }
 
-export { getSelectList }
+export function addSelect (params) {
+    return myAxios.post('/addChoice', qs.stringify({
+        ...params
+    }))
+}
+
+export function updateSelect (params) {
+    return myAxios.post('/editChoice', qs.stringify({
+        ...params
+    }))
+}
+
+export function deleteSelect (id) {
+    return myAxios.post('/removeChoice', qs.stringify({
+        id
+    }))
+}

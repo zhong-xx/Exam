@@ -17,6 +17,12 @@
     height: 40px;
 }
 
+img {
+    width: 120px;
+    margin-left: 55%;
+    margin-top: -110px;
+}
+
 .button {
     width: 100%;
     height: 46px

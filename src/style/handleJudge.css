@@ -1,0 +1,46 @@
+.judge-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 0.2);
+}
+
+.judge-container {
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.top {
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    border-bottom: 1px solid gray; 
+}
+
+.operation {
+    font-weight: bold;
+}
+
+.close {
+    color: gray;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: rgb(54, 54, 231);
+}
+
+.judge-form {
+    width: 100%;
+    margin: 0 0px;
+    padding-top: 35px;
+}
